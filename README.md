@@ -6,15 +6,8 @@ Source: https://www.youtube.com/watch?v=DNWLIAK4BUY&ab_channel=TechWithTim
 Implements:
 - Connects to LiveKit playground to start a conversation https://livekit.io/
 
-Steps:
+There are 2 alternatives to run Livekit Voice Assistant
 
-1) run a docker image
+1) Setup a docker container and connecting to LiveKit playground (DOCKER_LIVEKIT_PLAYGROUND.md)
 
-   $ docker container run -d python:3.10 sleep infinity
-
-2) pip install -r requirements.txt
-
-3) python3 agent.py dev
-
-4) connect to Livekit agent playground https://agents-playground.livekit.io/
-
+2) Setup a complete backend (python) and frontend (reactjs) in bare metal (BAREMETAL.md)
