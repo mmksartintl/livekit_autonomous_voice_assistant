@@ -1,7 +1,7 @@
 
 1) install react.js
 
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash  
 . .bashrc
 
 nvm install 18
@@ -32,8 +32,8 @@ cd voice-assistant-frontend
 
 cat >.env.local
 
-LIVEKIT_URL="wss://<URL>"
-LIVEKIT_API_KEY="api-key"
+LIVEKIT_URL="wss://<URL>"  
+LIVEKIT_API_KEY="api-key"  
 LIVEKIT_API_SECRET="<api-secret>"
 
 3) install node dependencies
@@ -44,7 +44,7 @@ pnpm i
 
 pnpm dev
 
-> voice-assistant2@0.1.0 dev /root/voice-assistant-frontend
+> voice-assistant2@0.1.0 dev /root/voice-assistant-frontend  
 > next dev
 
   ▲ Next.js 14.2.24
@@ -58,41 +58,41 @@ pnpm dev
 
 1) check python version
 
-python3 --version
+python3 --version  
 Python 3.8.10
 
 2) if previous python than 3.10, remove it
 
-apt remove python3-pip
-apt remove python3
+apt remove python3-pip  
+apt remove python3  
 apt autoremove
 
-3) install python 3.10
+3) install python 3.10  
 Install Python 3.10.x on Ubuntu 20.04 https://gist.github.com/rutcreate/c0041e842f858ceb455b748809763ddb
 
-apt update
+apt update  
 apt install software-properties-common -y
 
-add-apt-repository ppa:deadsnakes/ppa
+add-apt-repository ppa:deadsnakes/ppa  
 apt update
 
 apt install python3.10 python3.10-dev
 
-rm /usr/bin/python3
+rm /usr/bin/python3  
 ln -s python3.10 /usr/bin/python3
 
 4) install pip3 (compatible with python 3.10)
 
 curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10
 
-python3.10 -m pip --version
+python3.10 -m pip --version  
 pip 25.0.1 from /usr/local/lib/python3.10/dist-packages/pip (python 3.10)
 
 ------
 
 1) install python dependencies
 
-mkdir livekit-backend
+mkdir livekit-backend  
 cd livekit-backend
 
 cat >requirements.txt  (copy from repo)
@@ -107,26 +107,26 @@ cat >agent_flight.py  (copy from repo)
 
 cat >.env
 
-LIVEKIT_URL="wss://myserviceapp-yycieqvv.livekit.cloud"
-LIVEKIT_API_KEY="<api-key>"
-LIVEKIT_API_SECRET="<api-secret>"
-GROQ_API_KEY="<api-key>"
-ELEVEN_API_KEY="<api-key>"
+LIVEKIT_URL="wss://myserviceapp-yycieqvv.livekit.cloud"  
+LIVEKIT_API_KEY="<api-key>"  
+LIVEKIT_API_SECRET="<api-secret>"  
+GROQ_API_KEY="<api-key>"  
+ELEVEN_API_KEY="<api-key>"  
 DEEPGRAM_API_KEY="<api-key>"
 
 4) start backend
 
 python3 agent_flight.py dev
 
-2025-02-15 23:12:25,842 - DEBUG asyncio - Using selector: EpollSelector
-2025-02-15 23:12:25,845 - DEV  livekit.agents - Watching /root/livekit-backend
-2025-02-15 23:12:26,923 - DEBUG asyncio - Using selector: EpollSelector
-2025-02-15 23:12:26,929 - INFO livekit.agents - starting worker {"version": "0.12.13", "rtc-version": "0.20.0"}
+2025-02-15 23:12:25,842 - DEBUG asyncio - Using selector: EpollSelector  
+2025-02-15 23:12:25,845 - DEV  livekit.agents - Watching /root/livekit-backend  
+2025-02-15 23:12:26,923 - DEBUG asyncio - Using selector: EpollSelector  
+2025-02-15 23:12:26,929 - INFO livekit.agents - starting worker {"version": "0.12.13", "rtc-version": "0.20.0"}  
 2025-02-15 23:12:27,041 - INFO livekit.agents - registered worker {"id": "AW_2zmxSJNbytJa", "region": "Brazil", "protocol": 15, "node_id": "NC_OSAOPAULO1B_nzWQHHTofWTp"}
 
 ------
 
-Create certicates
+Create certificates
 
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout localhost.key -out localhost.crt
 
@@ -142,17 +142,17 @@ apt-get update && apt-get install nginx
 
 1) create livekit file with nginx config
 
-cd /etc/nginx/sites-available
+cd /etc/nginx/sites-available  
 cat >livefront (copy template from repo)
 
 2) create symlink
 
-cd /etc/nginx/sites-enabled
+cd /etc/nginx/sites-enabled  
 ln -s /etc/nginx/sites-available/livefront livefront
 
 3) test and reload nginx
 
-nginx -t
+nginx -t  
 nginx -s reload
 
 ------
