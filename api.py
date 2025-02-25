@@ -11,12 +11,9 @@ DB = DatabaseDriver()
 
 class CarDetails(enum.Enum):
     VIN = "vin"
-    Owner= "owner"
     Make = "make"
     Model = "model"
     Year = "year"
-    Service = "description_service"
-    Date = "date_service"
     
 
 class AssistantFnc(llm.FunctionContext):
@@ -25,12 +22,9 @@ class AssistantFnc(llm.FunctionContext):
         
         self._car_details = {
             CarDetails.VIN: "",
-            CarDetails.Owner: "",
             CarDetails.Make: "",
             CarDetails.Model: "",
-            CarDetails.Year: "",
-            CarDetails.Service: "",
-            CarDetails.Date: ""
+            CarDetails.Year: ""
         }
     
     def get_car_str(self):
@@ -50,12 +44,9 @@ class AssistantFnc(llm.FunctionContext):
         
         self._car_details = {
             CarDetails.VIN: result.vin,
-            CarDetails.Owner: result.owner,
             CarDetails.Make: result.make,
             CarDetails.Model: result.model,
-            CarDetails.Year: result.year,
-            CarDetails.Service: result.description_service,
-            CarDetails.Date: result.date_service
+            CarDetails.Year: result.year
         }
         
         return f"The car details are: {self.get_car_str()}"
@@ -69,26 +60,20 @@ class AssistantFnc(llm.FunctionContext):
     def create_car(
         self, 
         vin: Annotated[str, llm.TypeInfo(description="The vin of the car")],
-        owner: Annotated[str, llm.TypeInfo(description="The owner of the car")],
         make: Annotated[str, llm.TypeInfo(description="The make of the car ")],
         model: Annotated[str, llm.TypeInfo(description="The model of the car")],
-        year: Annotated[int, llm.TypeInfo(description="The year of the car")],
-        description_service: Annotated[int, llm.TypeInfo(description="The description of service for the car")],
-        date_service: Annotated[int, llm.TypeInfo(description="The date of service for the car")]
+        year: Annotated[int, llm.TypeInfo(description="The year of the car")]
     ):
-        logger.info("create car - vin: %s, owner: %s, make: %s, model: %s, year: %s, description: %s, date: %s", vin, owner, make, model, year, description_service, date_service)
-        result = DB.create_car(vin, owner, make, model, year, description_service, date_service)
+        logger.info("create car - vin: %s, make: %s, model: %s, year: %s", vin, make, model, year)
+        result = DB.create_car(vin, make, model, year)
         if result is None:
             return "Failed to create car"
         
         self._car_details = {
             CarDetails.VIN: result.vin,
-            CarDetails.Owner: result.owner,
             CarDetails.Make: result.make,
             CarDetails.Model: result.model,
-            CarDetails.Year: result.year,
-            CarDetails.Description: result.description_service,
-            CarDetails.Date: result.date_service
+            CarDetails.Year: result.year
         }
         
         return "car created!"

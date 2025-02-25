@@ -1,7 +1,7 @@
 # livekit_autonomous_voice_assistant
 Engages an AI autonomous voice assistant in a real conversation
 
-Source: https://www.youtube.com/watch?v=DNWLIAK4BUY&ab_channel=TechWithTim
+Source: https://www.youtube.com/watch?v=Ew7fOQpkKBw&ab_channel=TechWithTim
 
 Implements:
 - Connects to LiveKit playground to start a conversation https://livekit.io/
